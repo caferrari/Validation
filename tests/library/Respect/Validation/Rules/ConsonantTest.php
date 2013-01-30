@@ -1,26 +1,24 @@
 <?php
-
 namespace Respect\Validation\Rules;
 
-class ConsonantsTest extends \PHPUnit_Framework_TestCase
+class ConsonantTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider providerForValidConsonants
      */
-    public function test_valid_data_with_consonants_should_return_true($validConsonants, $aditional='')
+    public function testValidDataWithConsonantsShouldReturnTrue($validConsonants, $aditional='')
     {
-        $validator = new Consonants($aditional);
+        $validator = new Consonant($aditional);
         $this->assertTrue($validator->validate($validConsonants));
     }
 
     /**
      * @dataProvider providerForInvalidConsonants
-     * @expectedException Respect\Validation\Exceptions\ConsonantsException
+     * @expectedException Respect\Validation\Exceptions\ConsonantException
      */
-    public function test_invalid_consonants_should_fail_and_throw_ConsonantsException($invalidConsonants, $aditional='')
+    public function testInvalidConsonantsShouldFailAndThrowConsonantException($invalidConsonants, $aditional='')
     {
-        $validator = new Consonants($aditional);
+        $validator = new Consonant($aditional);
         $this->assertFalse($validator->validate($invalidConsonants));
         $this->assertFalse($validator->assert($invalidConsonants));
     }
@@ -29,9 +27,9 @@ class ConsonantsTest extends \PHPUnit_Framework_TestCase
      * @dataProvider providerForInvalidParams
      * @expectedException Respect\Validation\Exceptions\ComponentException
      */
-    public function test_invalid_constructor_params_should_throw_ComponentException_upon_instantiation($aditional)
+    public function testInvalidConstructorParamsShouldThrowComponentExceptionUponInstantiation($aditional)
     {
-        $validator = new Consonants($aditional);
+        $validator = new Consonant($aditional);
     }
 
     public function providerForInvalidParams()
@@ -73,5 +71,5 @@ class ConsonantsTest extends \PHPUnit_Framework_TestCase
             array('basic'),
         );
     }
-
 }
+
